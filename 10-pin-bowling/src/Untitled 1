@@ -1,7 +1,10 @@
 Registrera poäng
 	//kast
+	//felhantering
 	ruta
+	felhantering
 	serie
+	felhantering
 Strike
 Spärr
 Rutor
@@ -11,6 +14,9 @@ Visa
 	get
 	Ruta
 		aktuell
-		x
+		//x
 	Summa
 		x
+
+roll -1
+arrayoutofbound om ännu ej kastat
