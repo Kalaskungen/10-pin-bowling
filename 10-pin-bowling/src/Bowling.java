@@ -10,6 +10,8 @@ public class Bowling {
 	}
 	
 	public void roll(int score){
+		if (score > 10 || score < 0)
+			throw new IllegalArgumentException();
 		rolls.add(score);
 	}
 	
