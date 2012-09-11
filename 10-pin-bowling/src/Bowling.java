@@ -3,9 +3,12 @@ public class Bowling {
 	public static void main(String[] args){
 		
 	}
-	public int score;
+	public int rollScore;
 	
-	Bowling(int score){
-		this.score = score;
+	Bowling(){
+	}
+	
+	public int getRollScore(){
+		return rollScore;
 	}
 }

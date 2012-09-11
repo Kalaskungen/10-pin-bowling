@@ -8,8 +8,8 @@ public class bowlingTest {
 
 	@Test
 	public void testDisplayRoll() {
-		Bowling b = new Bowling(5);
-		assertEquals(5, b.score);
+		Bowling b = new Bowling();
+		assertEquals(0, b.getRollScore());
 	}
 
 }
