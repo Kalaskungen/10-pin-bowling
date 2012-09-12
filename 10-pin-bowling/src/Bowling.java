@@ -2,10 +2,8 @@ import java.util.ArrayList;
 
 
 public class Bowling {
-	public static void main(String[] args){
-	}
-	private ArrayList<Integer> rolls = new ArrayList<Integer>();
-	private ArrayList<Integer> frames = new ArrayList<Integer>();
+
+	private ArrayList<Frame> frames = new ArrayList<Frame>();
 
 	Bowling(){
 	}
@@ -13,9 +11,7 @@ public class Bowling {
 	public void roll(int score){
 		if (score > 10 || score < 10)
 			throw new IllegalArgumentException();
-		rolls.add(score);
-		rolls.add(0);
-		frames.add(11);
+		frames.add(new Frame(10));
 	}
 
 	public void roll(int roll1, int roll2){
@@ -23,35 +19,38 @@ public class Bowling {
 			throw new IllegalArgumentException();
 		if (roll1 == 10)
 			roll(roll1);
-		rolls.add(roll1);
-		rolls.add(roll2);
 		if (roll1 + roll2 == 10){
 
 		}
-		frames.add(roll1+roll2);
+		frames.add(new Frame(roll1, roll2));
 
-	}
-
-	public int getRollScore(int roll){
-		return rolls.get(roll);
 	}
 
 	public int getScoreSum() {
-		return 0;
+		return 1;
 	}
 
 	public int getFrameScore(int frame) {
 		int score;
-		if (frames.get(frame-1) == 11){
-			score = 10 + rolls.get(frame*2) + rolls.get(frame*2 +1);
-			return score;
-		}
+		Frame f = frames.get(frame-1);
+		score = f.getFrameScore();
 
-		if (frames.get(frame-1) == 10){
-			score = 10 + rolls.get(frame*2);
-			return score;
+		if (f.getRoll1Score() == 10) {
+			Frame f2 = frames.get(frame);
+			score += f2.getRoll1Score();
+
+			if (f2.getRoll1Score() == 10){
+				Frame f3 = frames.get(frame+1);
+				f3.getRoll1Score();
+				score += f3.getRoll1Score();
+			}
+			score += f2.getRoll2Score();
+		} 
+		if (f.getFrameScore() == 10 && f.getRoll1Score() != 10){
+			Frame f2 = frames.get(frame);
+			score += f2.getRoll1Score();
 		}
-		score = frames.get(frame-1);
 		return score;
 	}
+
 }

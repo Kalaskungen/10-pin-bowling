@@ -1,10 +1,11 @@
 Registrera poäng
 	//kast
-	//felhantering
+		//felhantering
 	ruta
-	felhantering
+		klass
+		felhantering
 	serie
-	felhantering
+		felhantering
 Strike
 Spärr
 Rutor
