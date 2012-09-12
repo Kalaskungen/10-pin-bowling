@@ -1,23 +1,20 @@
-Registrera poäng
+//Registrera poäng
 	//kast
 		//felhantering
-	ruta
+	//ruta
 		//klass
-		felhantering
-	serie
-		felhantering
+		//felhantering
 //Strike
 //Spärr
-Rutor
-	bonus
+//Rutor
+	//bonus
 //Kast
-Visa
-	//get
-	Ruta
-		aktuell
+//get
+	//Ruta
+		//aktuell
 		//x
-	Summa
-		x
-
-roll -1
+	//Summa
+		//x
+//strike som tionde/elfte, spärr som elfte/tolfte
 arrayoutofbound om ännu ej kastat
+sum frame som inte är spelad

@@ -23,12 +23,10 @@ public class Bowling {
 			Frame f = frames.get(9);
 			if (f.getFrameScore() != 10)
 				throw new IllegalArgumentException();
-			if (f.getRoll1Score() == 10)
-				if (frames.size() > 11)
-					throw new IllegalArgumentException();
-			if (f.getFrameScore() == 10)
-				if (frames.size() > 10)
-					throw new IllegalArgumentException();
+			if (f.getRoll1Score() == 10 && frames.size() > 11)
+				throw new IllegalArgumentException();
+			if (f.getRoll1Score() != 10 && frames.size() > 10)
+				throw new IllegalArgumentException();
 		}
 
 		if (roll1 + roll2 > 10 || roll1 < 0 || roll2 < 0)
@@ -45,12 +43,23 @@ public class Bowling {
 		while (i < 10 && i < frame){
 			Frame f = frames.get(i);
 			scoreSum += f.getFrameScore();
+			
 			if (f.getFrameScore() == 10){
 				Frame f2 = frames.get(i+1);
+				
 				if (f.getRoll1Score() == 10){
-					Frame f3 = frames.get(i+2);
-					scoreSum += f2.getFrameScore() + f3.getFrameScore();
+					scoreSum += f2.getRoll1Score();
+					
+					if (f2.getRoll1Score() == 10){
+						Frame f3 = frames.get(i+2);
+						scoreSum += f3.getRoll1Score();
+					}
+					
+					if (f2.getRoll1Score() != 10){
+						scoreSum += f2.getRoll2Score();
+					}
 				}
+				
 				if (f.getRoll1Score() != 10){
 					scoreSum += f2.getRoll1Score();
 				}
@@ -59,7 +68,7 @@ public class Bowling {
 		}
 		return scoreSum;
 	}
-	
+
 	public int getScoreSum() {
 		int scoreSum = getScoreSum(frames.size());
 		return scoreSum;
@@ -69,7 +78,7 @@ public class Bowling {
 		int score;
 		Frame f = frames.get(frame-1);
 		score = f.getFrameScore();
-
+		
 		if (f.getRoll1Score() == 10) {
 			Frame f2 = frames.get(frame);
 			score += f2.getFrameScore();
@@ -80,11 +89,17 @@ public class Bowling {
 				score += f3.getRoll1Score();
 			}
 		} 
+		
 		if (f.getFrameScore() == 10 && f.getRoll1Score() != 10 && frames.size() < 10){
 			Frame f2 = frames.get(frame);
 			score += f2.getRoll1Score();
 		}
 		return score;
+	}
+
+	public int getFrameScore() {
+		int FrameScore = frames.get(frames.size() - 1).getFrameScore();
+		return FrameScore;
 	}
 
 }
