@@ -43,7 +43,59 @@ public class bowlingTest {
 	@Test
 	public void testGetScoreSum() {
 		Bowling b = new Bowling();
-		assertEquals(0, b.getScoreSum());
+		b.roll(3,5);
+		b.roll(2,6);
+		assertEquals(16, b.getScoreSum());
+	}
+	
+	@Test
+	public void testGetScoreSumWhenXFramesPlayed() {
+		Bowling b = new Bowling();
+		b.roll(3,5);
+		b.roll(2,6);
+		b.roll(4,2);
+		assertEquals(16, b.getScoreSum(2));
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testTooLongGameNormal()  {
+		Bowling b = new Bowling();
+		for (int i = 0; i < 11; i++){
+			b.roll(4, 3);
+		}
 	}
 
+	@Test
+	public void testBonusFrameStrikes()  {
+		Bowling b = new Bowling();
+		for (int i = 0; i < 12; i++){
+			b.roll(10);
+		}
+		assertEquals(300, b.getScoreSum());
+	}
+	
+	@Test
+	public void testBonusFrameSpares()  {
+		Bowling b = new Bowling();
+		for (int i = 0; i < 11; i++){
+			b.roll(5, 5);
+		}
+		assertEquals(150, b.getScoreSum());
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testTooLongGameSpares()  {
+		Bowling b = new Bowling();
+		for (int i = 0; i < 12; i++){
+			b.roll(5, 5);
+		}
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testTooLongGameStrikes()  {
+		Bowling b = new Bowling();
+		for (int i = 0; i < 13; i++){
+			b.roll(10);
+		}
+	}
 }

@@ -2,17 +2,17 @@ Registrera poäng
 	//kast
 		//felhantering
 	ruta
-		klass
+		//klass
 		felhantering
 	serie
 		felhantering
-Strike
-Spärr
+//Strike
+//Spärr
 Rutor
 	bonus
-Kast
+//Kast
 Visa
-	get
+	//get
 	Ruta
 		aktuell
 		//x
